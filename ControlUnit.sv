@@ -16,26 +16,26 @@ logic [2:0] funct3;
 
 assign opcode = instr[6:0];
 assign funct7 = instr[31:25];
-assign funct3 = instr[14:12]
+assign funct3 = instr[14:12];
 
 if (opcode==7'b0110011 && funct3==3'b000 && funct7==7'b000000) //add
-    ALUctrl <= 3'b000;
-    ALUsrc <= 1'b0;
-    RegWrite <= 1'b1; 
+    assign ALUctrl = 3'b000;
+    assign ALUsrc = 1'b0;
+    assign RegWrite = 1'b1; 
 
 if (opcode==7'b0010011 && funct3==3'b000) //addi
-    ALUctrl <= 3'b000;
-    ALUsrc <= 1'b0;
-    RegWrite <= 1'b1;
-    ImmSrc <= instr[31:20];
+    assign ALUctrl = 3'b000;
+    assign ALUsrc = 1'b0;
+    assign RegWrite = 1'b1;
+    assign ImmSrc = instr[31:20];
 
 if (opcode==7'b1100011 && funct3==3'b001) //bne
-    ImmSrc <= instr[31:20];
-    RegWrite <= 1'b0;
+    assign ImmSrc = instr[31:20];
+    assign RegWrite <= 1'b0;
     if (EQ==0)
-        PCsrc <= 1'b1;
+        assign PCsrc = 1'b1;
     else
-        PCsrc <= 1'b0; 
+        assign PCsrc = 1'b0; 
 
 endmodule        
 
