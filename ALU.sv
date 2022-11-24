@@ -11,7 +11,7 @@ module ALU #(
     input logic [A_WIDTH-1:0] AD1, 
     input logic [A_WIDTH-1:0] AD2,
     input logic [A_WIDTH-1:0] AD3,
-    input logic [D_WIDTH-1:0] WD3,
+    input logic [D_WIDTH-1:0] ALUout,
     output logic              EQ,
     output logic [D_WIDTH-1:0] a0
 );
