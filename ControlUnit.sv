@@ -25,7 +25,7 @@ if (opcode==7'b0110011 && funct3==3'b000 && funct7==7'b000000) //add
 
 if (opcode==7'b0010011 && funct3==3'b000) //addi
     assign ALUctrl = 3'b000;
-    assign ALUsrc = 1'b0;
+    assign ALUsrc = 1'b1;
     assign RegWrite = 1'b1;
     assign ImmSrc = instr[31:20];
 
