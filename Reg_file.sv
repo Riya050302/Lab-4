@@ -14,17 +14,17 @@ module Reg_file #(
 
 );
 
-logic [ADDRESS_WIDTH-1:0] rom_array [2**DATA_WIDTH-1:0];
+    logic [ADDRESS_WIDTH-1:0] reg_array [2**DATA_WIDTH-1:0];
 
     always_ff @ (posedge clk) 
         if (WE3 == 1'b1)
-            rom_array[AD3] <= WD3;
+            reg_array[AD3] <= WD3;
 
-    assign a0 = rom_array[5b'01010];
+    assign a0 = reg_array[5b'01010];
 
     always_comb 
         begin
-            RD1 <= rom_array[AD1]
-            RD2 <= rom_array[AD2]
+            RD1 <= reg_array[AD1]
+            RD2 <= reg_array[AD2]
         end
 endmodule
