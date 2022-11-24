@@ -15,6 +15,6 @@ assign imm = {{8{ImmSrc[11]}},ImmSrc};
 if (opcode==7'b0010011) //addi
     assign ImmOp = {imm,rd,opcode};
 if (opcode==7'b1100011) //bne
-    assign ImmOp = {ImmSrc[11],ImmSrc[9:4],instr[24:12],ImmScr[3:0],ImmScr[10],opcode};
+    assign ImmOp = {ImmSrc[11],ImmSrc[9:4],instr[24:12],ImmSrc[3:0],ImmSrc[10],opcode};
 
 endmodule
