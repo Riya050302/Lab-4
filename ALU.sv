@@ -11,7 +11,6 @@ module ALU #(
     input logic [A_WIDTH-1:0] AD1, 
     input logic [A_WIDTH-1:0] AD2,
     input logic [A_WIDTH-1:0] AD3,
-    input logic [D_WIDTH-1:0] ALUout,
     output logic              EQ,
     output logic [D_WIDTH-1:0] a0
 );
@@ -19,13 +18,14 @@ module ALU #(
     logic [D_WIDTH-1:0] regOp2; 
     logic [D_WIDTH-1:0] ALUop1; 
     logic [D_WIDTH-1:0] ALUop2; 
+    logic [D_WIDTH-1:0] ALUout; 
 
 alu_ addralu (
     .ALUop1 (ALUop1),
     .ALUop2 (ALUop2),
     .EQ  (EQ),
     .ALUctrl (ALUctrl),
-    .ALUout (WD3)
+    .ALUout (ALUout)
 );
 
 Reg_file regfile(
@@ -34,7 +34,7 @@ Reg_file regfile(
     .AD2 (AD2),
     .AD3 (AD3),
     .WE3 (WE3),
-    .WD3 (WD3),
+    .WD3 (ALUout),
     .ALUop1 (ALUop1),
     .a0 (a0),
     .regOp2 (regOp2)
