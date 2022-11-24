@@ -37,7 +37,8 @@ if (opcode==7'b1100011 && funct3==3'b001) //bne
     else
         assign PCsrc = 1'b0; 
 
-endmodule        
+endmodule   
+     
 
     
 

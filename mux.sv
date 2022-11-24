@@ -7,3 +7,4 @@ module mux(
 
     assign ALUop2 = ALUsrc ? regOp2 : ImmOp;
 endmodule
+

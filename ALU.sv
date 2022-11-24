@@ -34,17 +34,21 @@ Reg_file regfile(
     .AD2 (AD2),
     .AD3 (AD3),
     .WE3 (WE3),
+    .RD1 (ALUop1),
+    .RD2 (regOp2),
     .WD3 (ALUout),
-    .ALUop1 (ALUop1),
-    .a0 (a0),
-    .regOp2 (regOp2)
+    .a0 (a0)
 );
 
 mux mux(
     .ALUsrc (ALUsrc),
     .regOp2 (regOp2),
-    .ALUOp2 (ALUOp2),
+    .ALUop2 (ALUop2),
     .ImmOp (ImmOp)
 );
 
 endmodule
+
+
+
+

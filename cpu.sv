@@ -51,8 +51,8 @@ toppc pc (
 ControlUnit controlunit (
     .PCsrc (PCsrc), 
     .RegWrite (regwrite), 
-    .ALUctrl (dout1),
-    .ALUsrc (dout2), 
+    .ALUctrl (ALUctrl),
+    .ALUsrc (ALUsrc), 
     .ImmSrc (Immsrc), 
     .EQ (EQ), 
     .instr (instr)
@@ -72,6 +72,8 @@ ALU alublock(
 );
 
 endmodule
+
+
 
 
 

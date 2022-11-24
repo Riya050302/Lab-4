@@ -18,7 +18,9 @@ Countermux Countermux (
 PC_Reg  PC_Reg( 
   .rst (rst),
   .next_PC (next_PC),
+  .clk (clk),
   .PC (PC)
 );
 
 endmodule
+

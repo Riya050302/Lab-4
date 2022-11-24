@@ -22,7 +22,8 @@ module Reg_file #(
 
     assign a0 = reg_array[5'b01010];
 
-        assign    RD1 = reg_array[AD1]
-        assign    RD2 = reg_array[AD2]
+    assign    RD1 = reg_array[AD1];
+    assign    RD2 = reg_array[AD2];
         
 endmodule
+

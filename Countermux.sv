@@ -8,10 +8,13 @@ module Countermux (
 logic  [31:0]       branch_PC;  
 logic  [31:0]       inc_PC;
 
-assign branch_PC = PC + ImmOP;
+assign branch_PC = PC + ImmOp;
 assign inc_PC = PC + 32'b100;
 assign next_PC = PCsrc ? branch_PC : inc_PC;
 
 endmodule 
+
+
+
 
 

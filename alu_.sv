@@ -16,3 +16,4 @@ always_comb
     assign      EQ = ALUop1 == ALUop2 ? 1:0;
 
 endmodule
+
