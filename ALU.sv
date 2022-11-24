@@ -10,7 +10,7 @@ module ALU #(
     input logic               WE3,  
     input logic [A_WIDTH-1:0] AD1, 
     input logic [A_WIDTH-1:0] AD2,
-    input logic [A_WIDTH-1:0] AD2,
+    input logic [A_WIDTH-1:0] AD3,
     input logic [D_WIDTH-1:0] WD3,
     output logic              EQ,
     output logic [D_WIDTH-1:0] a0
@@ -28,7 +28,7 @@ alu_ addralu (
     .ALUout (WD3)
 );
 
-Reg_file reg(
+Reg_file regfile(
     .clk (clk),
     .AD1 (AD1),
     .AD2 (AD2),
