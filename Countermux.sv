@@ -1,7 +1,7 @@
-module Countermux #(
+module Countermux (
   input logic [31:0]      PC,       
   input logic [11:0]      ImmOp, 
-  input logic             PCscr,
+  input logic             PCsrc,
   output  logic [31:0]    next_PC  
 );
 

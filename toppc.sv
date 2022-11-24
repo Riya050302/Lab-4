@@ -9,7 +9,7 @@ module toppc (
   logic  [31:0]        next_PC;    
 
 Countermux Countermux ( 
-  .PC_in (PC),
+  .PC (PC),
   .ImmOp (ImmOp),
   .next_PC (next_PC),
   .PCsrc (PCsrc)
@@ -18,7 +18,7 @@ Countermux Countermux (
 PC_Reg  PC_Reg( 
   .rst (rst),
   .next_PC (next_PC),
-  .PC_out (PC)
+  .PC (PC)
 );
 
 endmodule
