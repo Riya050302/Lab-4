@@ -31,9 +31,9 @@ if (opcode==7'b0010011 && funct3==3'b000) //addi
 
 if (opcode==7'b1100011 && funct3==3'b001) //bne
     assign ImmSrc = instr[31:20];
-    assign RegWrite <= 1'b0;
+    assign RegWrite = 1'b0;
     if (EQ==0)
-        assign PCsrc = 1'b1;
+       assign  PCsrc = 1'b1;
     else
         assign PCsrc = 1'b0; 
 

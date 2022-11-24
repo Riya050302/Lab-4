@@ -1,5 +1,5 @@
-module top #(          
-  input logic  [11:0]      ImmOp,
+module toppc (          
+  input logic  [31:0]      ImmOp,
   input logic              rst,   
   input logic              PCsrc,
   input logic              clk,

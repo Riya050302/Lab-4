@@ -9,41 +9,43 @@ module cpu #(
 );
 
     //connecting wires
-    logic [A_WIDTH-1:0] PC; 
-    logic [A_WIDTH-1:0] instr; 
-    logic PCsrc;
-    logic [2:0] ALUctrl; 
-    logic ALUsrc; 
-    logic EQ; 
-    logic regwrite; 
-    logic [11:0] Immsrc; 
-    logic [11:0] Immop; 
-    logic [4:0] rs1; 
-    logic [4:0] rs2; 
-    logic [4:0] rd; 
+logic [A_WIDTH-1:0] PC; 
+logic [A_WIDTH-1:0] instr; 
+logic PCsrc;
+logic [2:0] ALUctrl; 
+logic ALUsrc; 
+logic EQ; 
+logic regwrite; 
+logic [11:0] Immsrc; 
+logic [31:0] Immop; 
+logic [4:0] rs1; 
+logic [4:0] rs2; 
+logic [4:0] rd; 
 
 
-    assign rs1 = instr[19:15];
-    assign rs2 = instr[24:20];
-    assign rd = instr[11:5]; 
-
-
-toppc pcreg (
-    .clk (clk), 
-    .rst (rst),
-    .PC (PC),  
-    .PC_src (PCsrc)
-);
+assign rs1 = instr[19:15];
+assign rs2 = instr[24:20];
+assign rd = instr[11:5]; 
 
 InstrMem memory(
-    .a (PC),
-    .rd (instr)
+    .addr (PC),
+    .instr (instr), 
+    .clk (clk),
+    .reset (rst)
 );
 
 SignEx immext(
     .ImmOp (Immop), 
-    .Immsrc (Immsrc)
+    .ImmSrc (Immsrc),
     .instr(instr)
+);
+
+toppc pc (
+    .clk (clk), 
+    .rst (rst),
+    .PC (PC),  
+    .PCsrc (PCsrc),
+    .ImmOp (Immop)
 );
 
 ControlUnit controlunit (
@@ -51,8 +53,9 @@ ControlUnit controlunit (
     .RegWrite (regwrite), 
     .ALUctrl (dout1),
     .ALUsrc (dout2), 
-    .Immsrc , 
-    .EQ (EQ)
+    .ImmSrc (Immsrc), 
+    .EQ (EQ), 
+    .instr (instr)
 );
 
 ALU alublock(
@@ -67,6 +70,7 @@ ALU alublock(
 );
 
 endmodule
+
 
 
 

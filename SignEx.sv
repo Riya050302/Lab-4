@@ -1,4 +1,4 @@
-module SignEx #(
+module SignEx (
     input logic [11:0] ImmSrc,
     input logic [31:0] instr,
     output logic [31:0] ImmOp
