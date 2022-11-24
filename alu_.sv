@@ -7,10 +7,10 @@ module alu_(
 );
 always_comb 
     case (ALUctrl)
-    3b'000:     ALUout = ALUop1 + ALUop2;
-    3b'001:     ALUout = ALUop1 - ALUop2;
-    3b'010:     ALUout = ALUop1 & ALUop2;
-    3b'011:     ALUout = ALUop1 | ALUop2;
+    3'b000:     ALUout = ALUop1 + ALUop2;
+    3'b001:     ALUout = ALUop1 - ALUop2;
+    3'b010:     ALUout = ALUop1 & ALUop2;
+    3'b011:     ALUout = ALUop1 | ALUop2;
     default:    ALUout = 0;
     endcase
     assign      EQ = ALUop1 == ALUop2 ? 1:0;
