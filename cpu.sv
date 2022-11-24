@@ -67,6 +67,7 @@ ALU alublock(
     .EQ (EQ), 
     .ALUctrl (ALUctrl),
     .ALUsrc (ALUsrc),
+    .ImmOp (Immop)
 );
 
 endmodule
