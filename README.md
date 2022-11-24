@@ -35,3 +35,8 @@ What could have been done differently:
 ## Task 4 ##
 
 
+## Challenge ## 
+Hex code for lw instruction: 0005a503
+replace in line 7 of Lab4.mem file
+
+
