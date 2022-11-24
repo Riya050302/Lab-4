@@ -23,6 +23,9 @@ What could have been done differently:
 - I could have created the mux within the top level insted of creating a new module.
 
 ## Task 2 ##
+- My task includes 
+
+<img width="483" alt="image" src="https://user-images.githubusercontent.com/69693952/203307667-b80a3274-2c20-43a5-8693-e9df571463fb.png">
 
 
 ## Task 3 
