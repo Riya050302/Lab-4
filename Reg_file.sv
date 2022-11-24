@@ -20,7 +20,7 @@ module Reg_file #(
         if (WE3 == 1'b1)
             reg_array[AD3] <= WD3;
 
-    assign a0 = reg_array[5b'01010];
+    assign a0 = reg_array[5'b01010];
 
     always_comb 
         begin
