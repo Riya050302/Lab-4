@@ -129,6 +129,7 @@ VL_ATTR_COLD void Vcpu___024root___eval_settle(Vcpu___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu___024root___eval_settle\n"); );
     // Body
     Vcpu___024root___settle__TOP__0(vlSelf);
+    vlSelf->__Vm_traceActivity[3U] = 1U;
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->__Vm_traceActivity[1U] = 1U;
     vlSelf->__Vm_traceActivity[0U] = 1U;
@@ -163,11 +164,11 @@ VL_ATTR_COLD void Vcpu___024root___ctor_var_reset(Vcpu___024root* vlSelf) {
     vlSelf->cpu__DOT__pc__DOT__PC_Reg__DOT__sreg = VL_RAND_RESET_I(32);
     vlSelf->cpu__DOT__alublock__DOT__ALUop1 = VL_RAND_RESET_I(32);
     vlSelf->cpu__DOT__alublock__DOT__ALUop2 = VL_RAND_RESET_I(32);
-    for (int __Vi0=0; __Vi0<65536; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->cpu__DOT__alublock__DOT__regfile__DOT__reg_array[__Vi0] = VL_RAND_RESET_I(32);
     }
     vlSelf->__Vchglast__TOP__cpu__DOT__alublock__DOT__ALUop2 = VL_RAND_RESET_I(32);
-    for (int __Vi0=0; __Vi0<3; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<4; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }
 }

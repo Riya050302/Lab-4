@@ -20,7 +20,7 @@ VL_INLINE_OPT void Vcpu___024root___sequent__TOP__1(Vcpu___024root* vlSelf) {
     Vcpu__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu___024root___sequent__TOP__1\n"); );
     // Init
-    SData/*15:0*/ __Vdlyvdim0__cpu__DOT__alublock__DOT__regfile__DOT__reg_array__v0;
+    CData/*4:0*/ __Vdlyvdim0__cpu__DOT__alublock__DOT__regfile__DOT__reg_array__v0;
     IData/*31:0*/ __Vdlyvval__cpu__DOT__alublock__DOT__regfile__DOT__reg_array__v0;
     CData/*0:0*/ __Vdlyvset__cpu__DOT__alublock__DOT__regfile__DOT__reg_array__v0;
     // Body
@@ -163,14 +163,15 @@ void Vcpu___024root___eval(Vcpu___024root* vlSelf) {
     }
     if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
         Vcpu___024root___sequent__TOP__1(vlSelf);
+        vlSelf->__Vm_traceActivity[1U] = 1U;
     }
     if ((((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk))) 
          | ((IData)(vlSelf->rst) & (~ (IData)(vlSelf->__Vclklast__TOP__rst))))) {
         Vcpu___024root___sequent__TOP__2(vlSelf);
-        vlSelf->__Vm_traceActivity[1U] = 1U;
+        vlSelf->__Vm_traceActivity[2U] = 1U;
     }
     Vcpu___024root___combo__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
+    vlSelf->__Vm_traceActivity[3U] = 1U;
     // Final
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
     vlSelf->__Vclklast__TOP__rst = vlSelf->rst;

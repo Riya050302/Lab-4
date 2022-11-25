@@ -32,8 +32,8 @@ class Vcpu___024root final : public VerilatedModule {
     IData/*31:0*/ cpu__DOT__alublock__DOT__ALUop2;
     IData/*31:0*/ __Vchglast__TOP__cpu__DOT__alublock__DOT__ALUop2;
     VlUnpacked<CData/*7:0*/, 65536> cpu__DOT__memory__DOT__rom_array;
-    VlUnpacked<IData/*31:0*/, 65536> cpu__DOT__alublock__DOT__regfile__DOT__reg_array;
-    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
+    VlUnpacked<IData/*31:0*/, 32> cpu__DOT__alublock__DOT__regfile__DOT__reg_array;
+    VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vcpu__Syms* const vlSymsp;
