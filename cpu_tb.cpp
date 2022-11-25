@@ -24,8 +24,8 @@ int main (int argc, char **argv, char **env){
 
 
     //initialize simulation inputs
-    cpu->clk = 1; 
-    cpu->rst = 1;  
+    top->clk = 1; 
+    top->rst = 1;  
     //run simulation for many clock cycles
     for (i=0; i < 300; ){ //for loop where simulation happens - i counts clock cycles
         if(!vbdFlag()) {
@@ -35,19 +35,19 @@ int main (int argc, char **argv, char **env){
         //dump vars into VCDfile and toggle clock 
         for (clk = 0; clk < 2; clk++){ //for loop to toggle clock and outputs trace for each half of the clock cycle and forces model to evaluate on both edges of clock 
             tfp->dump (2*i+clk);
-            cpu->clk = !cpu->clk; 
-            cpu->eval(); 
+            top->clk = !top->clk; 
+            top->eval(); 
         }
 
         if (i > 2) {
-            cpu->rst = 0;
+            top->rst = 0;
         }
 
         // Send Count value to vbuddy
-        vbdHex(4, (int(cpu->a0) >> 16) & 0xF);
-        vbdHex(3, (int(cpu->a0) >> 8) & 0xF);
-        vbdHex(2, (int(cpu->a0) >> 4) & 0xF);
-        vbdHex(1, int(cpu->a0) & 0xF);
+        vbdHex(4, (int(top->a0) >> 16) & 0xF);
+        vbdHex(3, (int(top->a0) >> 8) & 0xF);
+        vbdHex(2, (int(top->a0) >> 4) & 0xF);
+        vbdHex(1, int(top->a0) & 0xF);
         vbdCycle(i+1);
   
         if (Verilated::gotFinish()) exit (0);
