@@ -15,64 +15,96 @@ logic [2:0] funct3;
 //logic [6:0] funct7;
 
 assign opcode = instr[6:0];
-assign funct3 = instr[14:12];
-assign funct7 = instr[31:25]; 
+// assign funct3 = instr[14:12];
+// assign funct7 = instr[31:25]; 
     
 
 
 always_comb
-    RegWrite = 1'b0;
-    ALUctrl = 3'b000;
-    ALUsrc = 1'b0;
-    ImmSrc = 12'b000000000000;
-    PCsrc = 1'b1;
-    case (opcode)
+    case (instr[6:0])
         7'b0010011: 
-            case (funct3) //add
-                3'b000: ALUctrl = 3'b000;
-                        ALUsrc = 1'b0;
-                        RegWrite = 1'b1;
-                default: RegWrite = 1'b0;
-                         ALUctrl = 3'b000;
-                         ALUsrc = 1'b0;
+        begin 
+            case (instr[14:12]) //add
+                3'b000: 
+                begin
+                    ALUctrl = 3'b000;
+                    ALUsrc = 1'b0;
+                    RegWrite = 1'b1;
+                end 
+                default: 
+                begin
+                    RegWrite = 1'b0;
+                    ALUctrl = 3'b000;
+                    ALUsrc = 1'b0;
+                end 
             endcase
-        7'b0010011:
-            case (funct3) //addi
-                3'b000: ALUctrl = 3'b000;
-                        ALUsrc = 1'b0;
-                        RegWrite = 1'b1;
-                default: RegWrite = 1'b0;
-                         ALUctrl = 3'b000;
-                         ALUsrc = 1'b0;
-            endcase
-        7'b1100011:
-            case (funct3)
+        end 
+        // 7'b0010011: 
+        // begin 
+        //     case (instr[14:12]) //addi
+        //         3'b000: 
+        //         begin
+        //             ALUctrl = 3'b000;
+        //             ALUsrc = 1'b0;
+        //             RegWrite = 1'b1;
+        //         end 
+        //         default: 
+        //         begin
+        //             RegWrite = 1'b0;
+        //             ALUctrl = 3'b000;
+        //             ALUsrc = 1'b0;
+        //         end 
+        //     endcase
+        // end 
+        7'b1100011: 
+        begin 
+            case (instr[14:12])
                 3'b001:
+                begin 
                     case (EQ)
-                        0: ImmSrc = instr[31:20]; //bne
+                        0: 
+                        begin
+                           ImmSrc = instr[31:20]; //bne
                            RegWrite = 1'b0;
                            PCsrc = 1'b1;
-                        1: ImmSrc = instr[31:20];
+                        end 
+                        1: 
+                        begin
+                           ImmSrc = instr[31:20];
                            RegWrite = 1'b0;
                            PCsrc = 1'b0;
-                        default: RegWrite = 1'b0;
-                                 ImmSrc = 12'b000000000000;
-                                 PCsrc = 1'b1;
+                        end
+                        default: 
+                        begin
+                            RegWrite = 1'b0;
+                            ImmSrc = 12'b000000000000;
+                            PCsrc = 1'b1;
+                        end
                     endcase
-                default: RegWrite = 1'b0;
-                         ALUctrl = 3'b000;
-                         ALUsrc = 1'b0;
-                         ImmSrc = 12'b000000000000;
-                         PCsrc = 1'b1;
+                end 
+                default: 
+                begin
+                    RegWrite = 1'b0;
+                    ALUctrl = 3'b000;
+                    ALUsrc = 1'b0;
+                    ImmSrc = 12'b000000000000;
+                    PCsrc = 1'b1;
+                end
             endcase
-        default: RegWrite = 1'b0;
-                 ALUctrl = 3'b000;
-                 ALUsrc = 1'b0;
-                 ImmSrc = 12'b000000000000;
-                 PCsrc = 1'b1;
+        end 
+        default: 
+        begin
+            RegWrite = 1'b0;
+            ALUctrl = 3'b000;
+            ALUsrc = 1'b0;
+            ImmSrc = 12'b000000000000;
+            PCsrc = 1'b1;
+        end 
     endcase
                 
 endmodule   
+
+
 
 
      

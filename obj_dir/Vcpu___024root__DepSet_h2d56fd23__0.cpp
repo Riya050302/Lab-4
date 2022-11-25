@@ -72,6 +72,21 @@ VL_INLINE_OPT void Vcpu___024root___sequent__TOP__2(Vcpu___024root* vlSelf) {
                                                 | vlSelf->cpu__DOT__memory__DOT__rom_array
                                                 [(0xffffU 
                                                   & vlSelf->cpu__DOT__pc__DOT__PC_Reg__DOT__sreg)])));
+    if ((0x13U == (0x7fU & vlSelf->cpu__DOT__instr))) {
+        vlSelf->cpu__DOT__ALUctrl = 0U;
+        vlSelf->cpu__DOT__ALUsrc = 0U;
+    } else if ((0x63U == (0x7fU & vlSelf->cpu__DOT__instr))) {
+        if ((1U != (7U & (vlSelf->cpu__DOT__instr >> 0xcU)))) {
+            vlSelf->cpu__DOT__ALUctrl = 0U;
+            vlSelf->cpu__DOT__ALUsrc = 0U;
+        }
+    } else {
+        vlSelf->cpu__DOT__ALUctrl = 0U;
+        vlSelf->cpu__DOT__ALUsrc = 0U;
+    }
+    vlSelf->cpu__DOT__regwrite = (IData)((0x13U == 
+                                          (0x707fU 
+                                           & vlSelf->cpu__DOT__instr)));
     vlSelf->cpu__DOT__alublock__DOT__ALUop1 = vlSelf->cpu__DOT__alublock__DOT__regfile__DOT__reg_array
         [(0x1fU & (vlSelf->cpu__DOT__instr >> 0xfU))];
 }
@@ -83,36 +98,26 @@ VL_INLINE_OPT void Vcpu___024root___combo__TOP__0(Vcpu___024root* vlSelf) {
     // Body
     vlSelf->cpu__DOT__EQ = (vlSelf->cpu__DOT__alublock__DOT__ALUop1 
                             == vlSelf->cpu__DOT__alublock__DOT__ALUop2);
-    if ((IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr)))) {
-        vlSelf->cpu__DOT__ALUctrl = 0U;
-        vlSelf->cpu__DOT__regwrite = 1U;
-        vlSelf->cpu__DOT__ALUsrc = 0U;
-    } else if (((IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr))) 
-                & (~ (IData)(vlSelf->cpu__DOT__EQ)))) {
-        vlSelf->cpu__DOT__ALUctrl = 0U;
-        vlSelf->cpu__DOT__regwrite = 1U;
-        vlSelf->cpu__DOT__ALUsrc = 1U;
-    } else if (((IData)((0x1063U == (0x707fU & vlSelf->cpu__DOT__instr))) 
-                & (~ (IData)(vlSelf->cpu__DOT__EQ)))) {
-        vlSelf->cpu__DOT__regwrite = 0U;
-    }
-    if ((1U & (~ (IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr)))))) {
-        if ((1U & (~ ((IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr))) 
-                      & (~ (IData)(vlSelf->cpu__DOT__EQ)))))) {
-            if (((IData)((0x1063U == (0x707fU & vlSelf->cpu__DOT__instr))) 
-                 & (~ (IData)(vlSelf->cpu__DOT__EQ)))) {
-                vlSelf->cpu__DOT__PCsrc = (1U & (~ (IData)(vlSelf->cpu__DOT__EQ)));
-            }
-        }
-        if (((IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr))) 
-             & (~ (IData)(vlSelf->cpu__DOT__EQ)))) {
-            vlSelf->cpu__DOT__Immsrc = (vlSelf->cpu__DOT__instr 
-                                        >> 0x14U);
-        } else if (((IData)((0x1063U == (0x707fU & vlSelf->cpu__DOT__instr))) 
-                    & (~ (IData)(vlSelf->cpu__DOT__EQ)))) {
-            vlSelf->cpu__DOT__Immsrc = (vlSelf->cpu__DOT__instr 
-                                        >> 0x14U);
-        }
+    if ((0x13U != (0x7fU & vlSelf->cpu__DOT__instr))) {
+        vlSelf->cpu__DOT__PCsrc = (1U & ((0x1063U != 
+                                          (0x707fU 
+                                           & vlSelf->cpu__DOT__instr)) 
+                                         | (~ (IData)(vlSelf->cpu__DOT__EQ))));
+        vlSelf->cpu__DOT__Immsrc = ((0x63U == (0x7fU 
+                                               & vlSelf->cpu__DOT__instr))
+                                     ? ((1U == (7U 
+                                                & (vlSelf->cpu__DOT__instr 
+                                                   >> 0xcU)))
+                                         ? (0xfffU 
+                                            & ((IData)(vlSelf->cpu__DOT__EQ)
+                                                ? ((IData)(vlSelf->cpu__DOT__EQ)
+                                                    ? 
+                                                   (vlSelf->cpu__DOT__instr 
+                                                    >> 0x14U)
+                                                    : 0U)
+                                                : (vlSelf->cpu__DOT__instr 
+                                                   >> 0x14U)))
+                                         : 0U) : 0U);
     }
     if ((0x13U == (0x7fU & vlSelf->cpu__DOT__instr))) {
         vlSelf->cpu__DOT__Immop = (((- (IData)((1U 

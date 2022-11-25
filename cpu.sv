@@ -1,6 +1,6 @@
 module cpu #(
-    parameter A_WIDTH = 5,
-              D_WIDTH = 32
+    parameter D_WIDTH = 32
+    //A_WIDTH = 5,
 )(
     //interface signals
     input logic clk, 
@@ -18,13 +18,13 @@ logic EQ;
 logic regwrite; 
 logic [11:0] Immsrc; 
 logic [31:0] Immop; 
-logic [A_WIDTH-1:0] rs1;
-logic [A_WIDTH-1:0] rs2;
-logic [A_WIDTH-1:0] rd;
+// logic [A_WIDTH-1:0] rs1;
+// logic [A_WIDTH-1:0] rs2;
+// logic [A_WIDTH-1:0] rd;
 
-assign rs1 = {instr[19:15]};
-    assign rs2 = {instr[24:20]};
-assign rd = {instr[11:7]};
+// assign rs1 = {instr[19:15]};
+// assign rs2 = {instr[24:20]};
+// assign rd = {instr[11:7]};
 
 InstrMem memory(
     .addr (PC),
@@ -56,9 +56,9 @@ ControlUnit controlunit (
 );
 
 ALU alublock(
-    .AD1 (rs1), 
-    .AD2 (rs2), 
-    .AD3 (rd),
+    .AD1 (instr[19:15]), 
+    .AD2 (instr[24:20]), 
+    .AD3 (instr[11:7]),
     .WE3 (regwrite),
     .clk (clk), 
     .EQ (EQ), 

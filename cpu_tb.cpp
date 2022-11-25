@@ -27,21 +27,20 @@ int main (int argc, char **argv, char **env){
     top->clk = 1; 
     top->rst = 1;  
     //run simulation for many clock cycles
-    for (i=0; i < 300; ){ //for loop where simulation happens - i counts clock cycles
-        if(!vbdFlag()) {
-            continue;
-        }
-
+    for (i=0; i < 3000; ){ //for loop where simulation happens - i counts clock cycles
+        // if(!vbdFlag()) {
+        //     continue;
+        // }
+        top->rst = 0;
         //dump vars into VCDfile and toggle clock 
         for (clk = 0; clk < 2; clk++){ //for loop to toggle clock and outputs trace for each half of the clock cycle and forces model to evaluate on both edges of clock 
             tfp->dump (2*i+clk);
             top->clk = !top->clk; 
             top->eval(); 
+            
         }
-
-        if (i > 2) {
-            top->rst = 0;
-        }
+         
+        //std::cout << top->a0 << std::endl;
 
         // Send Count value to vbuddy
         vbdHex(4, (int(top->a0) >> 16) & 0xF);
