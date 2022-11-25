@@ -16,7 +16,7 @@ logic [2:0] funct3;
 assign opcode = instr[6:0];
 assign funct3 = instr[14:12];
 
-always_latch @(instr) 
+always_comb
     if (opcode == 7'b0010011 & funct3 == 3'b000) //add
         begin
         assign ALUctrl = 3'b000;
@@ -35,7 +35,7 @@ always_latch @(instr)
         assign ImmSrc = instr[31:20];
         assign RegWrite = 1'b0;
         if (EQ==0)
-            assign  PCsrc = 1'b1;
+            assign PCsrc = 1'b1;
         else
             assign PCsrc = 1'b0; 
         end
