@@ -1,37 +1,34 @@
 module cpu #(
-    parameter A_WIDTH = 32,
+    parameter A_WIDTH = 16,
               D_WIDTH = 32
 )(
     //interface signals
     input logic clk, 
     input logic rst, 
-    output logic a0
+    output logic [D_WIDTH-1:0]a0
 );
 
     //connecting wires
-logic [A_WIDTH-1:0] PC; 
-logic [A_WIDTH-1:0] instr; 
+logic [D_WIDTH-1:0] PC; 
+logic [D_WIDTH-1:0] instr; 
 logic PCsrc;
-logic [2:0] ALUctrl; 
+logic [2:0]  ALUctrl; 
 logic ALUsrc; 
 logic EQ; 
 logic regwrite; 
 logic [11:0] Immsrc; 
 logic [31:0] Immop; 
-logic [4:0] rs1; 
-logic [4:0] rs2; 
-logic [4:0] rd; 
+logic [A_WIDTH-1:0] rs1;
+logic [A_WIDTH-1:0] rs2;
+logic [A_WIDTH-1:0] rd;
 
-
-assign rs1 = instr[19:15];
-assign rs2 = instr[24:20];
-assign rd = instr[11:5]; 
+assign rs1 = {{11'b0},instr[19:15]};
+assign rs2 = {{11'b0},instr[24:20]};
+assign rd = {{11'b0},instr[11:7]};
 
 InstrMem memory(
     .addr (PC),
-    .instr (instr), 
-    .clk (clk),
-    .reset (rst)
+    .instr (instr)
 );
 
 SignEx immext(

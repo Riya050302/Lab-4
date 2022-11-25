@@ -1,12 +1,12 @@
 module ALU #(
-    parameter A_WIDTH = 32,
+    parameter A_WIDTH = 16,
               D_WIDTH = 32  
 )(
     // interface signals
     input logic               clk, 
     input logic               ALUsrc, 
-    input logic               ALUctrl, 
-    input logic               ImmOp, 
+    input logic [2:0]         ALUctrl, 
+    input logic [31:0]          ImmOp, 
     input logic               WE3,  
     input logic [A_WIDTH-1:0] AD1, 
     input logic [A_WIDTH-1:0] AD2,
@@ -20,14 +20,6 @@ module ALU #(
     logic [D_WIDTH-1:0] ALUop2; 
     logic [D_WIDTH-1:0] ALUout; 
 
-alu_ addralu (
-    .ALUop1 (ALUop1),
-    .ALUop2 (ALUop2),
-    .EQ  (EQ),
-    .ALUctrl (ALUctrl),
-    .ALUout (ALUout)
-);
-
 Reg_file regfile(
     .clk (clk),
     .AD1 (AD1),
@@ -40,12 +32,19 @@ Reg_file regfile(
     .a0 (a0)
 );
 
-mux mux(
-    .ALUsrc (ALUsrc),
-    .regOp2 (regOp2),
+
+  assign ALUop2 = ALUsrc ?  ImmOp : regOp2;
+
+
+alu_ addralu (
+    .ALUop1 (ALUop1),
     .ALUop2 (ALUop2),
-    .ImmOp (ImmOp)
+    .EQ  (EQ),
+    .ALUctrl (ALUctrl),
+    .ALUout (ALUout)
 );
+
+
 
 endmodule
 

@@ -5,6 +5,6 @@ module mux(
 
 );
 
-    assign ALUop2 = ALUsrc ? regOp2 : ImmOp;
+    assign ALUop2 = ALUsrc ?  ImmOp : regOp2;
 endmodule
 
