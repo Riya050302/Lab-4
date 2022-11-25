@@ -1,5 +1,5 @@
 module cpu #(
-    parameter A_WIDTH = 16,
+    parameter A_WIDTH = 5,
               D_WIDTH = 32
 )(
     //interface signals
@@ -22,9 +22,9 @@ logic [A_WIDTH-1:0] rs1;
 logic [A_WIDTH-1:0] rs2;
 logic [A_WIDTH-1:0] rd;
 
-assign rs1 = {{11'b0},instr[19:15]};
-assign rs2 = {{11'b0},instr[24:20]};
-assign rd = {{11'b0},instr[11:7]};
+assign rs1 = {instr[19:15]};
+    assign rs2 = {instr[24:20]};
+assign rd = {instr[11:7]};
 
 InstrMem memory(
     .addr (PC),
