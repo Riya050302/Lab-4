@@ -1,5 +1,5 @@
 module Reg_file #(
-    parameter ADDRESS_WIDTH = 16,
+    parameter ADDRESS_WIDTH = 5,
               DATA_WIDTH = 32
 )(
     input   logic [ADDRESS_WIDTH-1:0]        AD1,
@@ -20,9 +20,9 @@ module Reg_file #(
         if (WE3 == 1'b1)
             reg_array[AD3] <= WD3;
 
-    assign a0 = reg_array[{16'b01010}];
+    assign a0 = reg_array[{5'b01010}];
 
-    always_ff @ *
+    always_comb
     begin
         RD1 = reg_array[AD1];
         RD2 = reg_array[AD2];
