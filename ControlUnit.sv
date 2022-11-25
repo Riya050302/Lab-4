@@ -18,13 +18,14 @@ assign opcode = instr[6:0];
 assign funct3 = instr[14:12];
 assign funct7 = instr[31:25]; 
     
-assign RegWrite = 1'b0;
-assign ALUctrl = 3'b000;
-assign ALUsrc = 1'b0;
-assign ImmSrc = 12'b000000000000;
-assign PCsrc = 1'b1;
+
 
 always_comb
+    RegWrite = 1'b0;
+    ALUctrl = 3'b000;
+    ALUsrc = 1'b0;
+    ImmSrc = 12'b000000000000;
+    PCsrc = 1'b1;
     case (opcode)
         7'b0010011: 
             case (funct3) //add
@@ -54,7 +55,7 @@ always_comb
                         1: ImmSrc = instr[31:20];
                            RegWrite = 1'b0;
                            PCsrc = 1'b0;
-                        defalut: RegWrite = 1'b0;
+                        default: RegWrite = 1'b0;
                                  ImmSrc = 12'b000000000000;
                                  PCsrc = 1'b1;
                     endcase
