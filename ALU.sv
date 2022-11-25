@@ -1,5 +1,5 @@
 module ALU #(
-    parameter A_WIDTH = 16,
+    parameter A_WIDTH = 5,
               D_WIDTH = 32  
 )(
     // interface signals

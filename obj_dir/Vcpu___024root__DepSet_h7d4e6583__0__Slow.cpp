@@ -42,9 +42,8 @@ VL_ATTR_COLD void Vcpu___024root___settle__TOP__0(Vcpu___024root* vlSelf) {
                                                   & vlSelf->cpu__DOT__pc__DOT__PC_Reg__DOT__sreg)])));
     vlSelf->cpu__DOT__alublock__DOT__ALUop1 = vlSelf->cpu__DOT__alublock__DOT__regfile__DOT__reg_array
         [(0x1fU & (vlSelf->cpu__DOT__instr >> 0xfU))];
-    vlSelf->cpu__DOT__EQ = ((vlSelf->cpu__DOT__alublock__DOT__ALUop1 
-                             == vlSelf->cpu__DOT__alublock__DOT__ALUop2)
-                             ? 1U : 0U);
+    vlSelf->cpu__DOT__EQ = (vlSelf->cpu__DOT__alublock__DOT__ALUop1 
+                            == vlSelf->cpu__DOT__alublock__DOT__ALUop2);
     if ((IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr)))) {
         vlSelf->cpu__DOT__ALUctrl = 0U;
         vlSelf->cpu__DOT__regwrite = 1U;

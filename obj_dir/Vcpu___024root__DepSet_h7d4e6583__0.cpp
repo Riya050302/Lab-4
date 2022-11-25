@@ -81,9 +81,8 @@ VL_INLINE_OPT void Vcpu___024root___combo__TOP__0(Vcpu___024root* vlSelf) {
     Vcpu__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu___024root___combo__TOP__0\n"); );
     // Body
-    vlSelf->cpu__DOT__EQ = ((vlSelf->cpu__DOT__alublock__DOT__ALUop1 
-                             == vlSelf->cpu__DOT__alublock__DOT__ALUop2)
-                             ? 1U : 0U);
+    vlSelf->cpu__DOT__EQ = (vlSelf->cpu__DOT__alublock__DOT__ALUop1 
+                            == vlSelf->cpu__DOT__alublock__DOT__ALUop2);
     if ((IData)((0x13U == (0x707fU & vlSelf->cpu__DOT__instr)))) {
         vlSelf->cpu__DOT__ALUctrl = 0U;
         vlSelf->cpu__DOT__regwrite = 1U;
