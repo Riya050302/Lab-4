@@ -16,9 +16,10 @@ module Reg_file #(
 
     logic [DATA_WIDTH-1:0] reg_array [2**ADDRESS_WIDTH-1:0];
 
-    always_ff @ (posedge clk) 
-        if (WE3 == 1'b1)
+    always_ff @ (posedge clk) begin
+        if (WE3)
             reg_array[AD3] <= WD3;
+    end 
 
     assign a0 = reg_array[{5'b01010}];
 
@@ -26,6 +27,12 @@ module Reg_file #(
     begin
         RD1 = reg_array[AD1];
         RD2 = reg_array[AD2];
+    end
+
+     initial begin
+        for (int i = 0; i < $size(reg_array); i++) begin
+            reg_array[i] = 32'b0;
+        end
     end
         
 endmodule

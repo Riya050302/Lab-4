@@ -5,15 +5,11 @@ module PC_Reg (
     output logic [31:0]           PC
 );
 
-logic [31:0] sreg;
 
-always_ff @ (posedge clk, posedge rst)
-    if (rst)
-        sreg <= 32'b0;
-    else 
-        sreg <= next_PC;
-
-assign PC = sreg;
+always_ff @ (posedge clk, posedge rst)begin
+   if(rst) PC <= {32'b0};
+    else    PC <= next_PC;
+end 
 
 endmodule
 

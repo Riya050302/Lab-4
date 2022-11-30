@@ -1,5 +1,5 @@
   module Data_Memory #(
-    parameter   ADDRESS_WIDTH = 32,
+    parameter   ADDRESS_WIDTH = 20,
                 DATA_WIDTH = 32
 )(
     input  logic                       clk,

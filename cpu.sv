@@ -3,14 +3,14 @@ module cpu #(
     //A_WIDTH = 5,
 )(
     //interface signals
-    input logic clk, 
+    input logic clk,
     input logic rst, 
     output logic [D_WIDTH-1:0]a0
 );
 
     //connecting wires
-logic [D_WIDTH-1:0] PC; 
-logic [D_WIDTH-1:0] instr; 
+    logic [D_WIDTH-1:0] PC;
+    logic [D_WIDTH-1:0] instr;
 logic PCsrc;
 logic [2:0]  ALUctrl; 
 logic ALUsrc; 
