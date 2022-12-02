@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -euo pipefail
+
 # cleanup
 rm -rf obj_dir
 rm -f *.vcd

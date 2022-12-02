@@ -15,6 +15,7 @@ class Vcpu___024root final : public VerilatedModule {
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
+    VL_OUT8(a0,0,0);
     CData/*0:0*/ cpu__DOT__PCsrc;
     CData/*2:0*/ cpu__DOT__ALUctrl;
     CData/*0:0*/ cpu__DOT__ALUsrc;
@@ -23,9 +24,7 @@ class Vcpu___024root final : public VerilatedModule {
     CData/*2:0*/ cpu__DOT__controlunit__DOT__funct3;
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP__rst;
-    CData/*0:0*/ __Vchglast__TOP__cpu__DOT__EQ;
-    SData/*11:0*/ cpu__DOT__Immsrc;
-    VL_OUT(a0,31,0);
+    SData/*11:0*/ cpu__DOT____Vcellout__controlunit__ImmSrc;
     IData/*31:0*/ cpu__DOT__PC;
     IData/*31:0*/ cpu__DOT__instr;
     IData/*31:0*/ cpu__DOT__Immop;
@@ -33,9 +32,10 @@ class Vcpu___024root final : public VerilatedModule {
     IData/*31:0*/ cpu__DOT__alublock__DOT__ALUop1;
     IData/*31:0*/ cpu__DOT__alublock__DOT__ALUop2;
     IData/*31:0*/ cpu__DOT__alublock__DOT__regfile__DOT__unnamedblk1__DOT__i;
-    VlUnpacked<CData/*7:0*/, 1048576> cpu__DOT__memory__DOT__rom_array;
+    IData/*31:0*/ __Vchglast__TOP__cpu__DOT__alublock__DOT__ALUop2;
+    VlUnpacked<CData/*7:0*/, 16384> cpu__DOT__memory__DOT__rom_array;
     VlUnpacked<IData/*31:0*/, 32> cpu__DOT__alublock__DOT__regfile__DOT__reg_array;
-    VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vcpu__Syms* const vlSymsp;
