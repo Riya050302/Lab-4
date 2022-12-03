@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # cleanup
 rm -rf obj_dir
 rm -f *.vcd
